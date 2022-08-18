@@ -16,7 +16,13 @@ function App(props) {
 
   const renderImage = () => {
     if (data.apiData) {
-      return <img src={data.apiData.primaryImage} alt={data.apiData.title} />;
+      return (
+        <img
+          src={data.apiData.primaryImage}
+          alt={data.apiData.title}
+          className="galleryImage"
+        />
+      );
     } else {
       return <p>Image goes here</p>;
     }
@@ -31,7 +37,7 @@ function App(props) {
       <div>
         <button
           onClick={() => {
-            dispatch();
+            dispatch(fetchData());
           }}
         >
           Trigger Thunk
@@ -66,8 +72,10 @@ function App(props) {
       />
       <div>
         {/* Once you have plugged everything in, render the image here! */}
-        {data.objectId}
+
         {renderImage()}
+        <br />
+        {data.apiData.title}
       </div>
     </div>
   );
